@@ -1,0 +1,287 @@
+
+main {
+  margin: 0;
+  padding: 0;
+}
+
+body {  
+  font-family: -apple-system, 
+    BlinkMacSystemFont, 
+    "Segoe UI", 
+    Roboto, 
+    Oxygen-Sans, 
+    Ubuntu, 
+    Cantarell, 
+    "Helvetica Neue", 
+    sans-serif;
+  font-weight: normal;
+  margin: 0;
+}
+
+.mainApp {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.messagingPanel {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  max-height: 40%;
+}
+
+.messagePanel {
+  border: 2px solid #c4c4c4;
+  margin: 10px;
+  border-radius: 10px;
+  max-height: 40%;
+}
+
+.messageScroll {
+  max-height: 70%;
+  overflow: scroll;
+  overflow-x: hidden;
+  background-color: #fff;
+}
+
+.messageScroll::-webkit-scrollbar {
+    width: 16px;
+}
+ 
+.messageScroll::-webkit-scrollbar-track {
+    background-color: #e4e4e4;
+    border-radius: 100px;
+}
+ 
+.messageScroll::-webkit-scrollbar-thumb {
+    background-color: #3CBAC5;
+    border-radius: 100px;
+}
+
+.message {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  font-family: "SanFrancisco";
+  font-size: 1.25rem;
+  max-width: 600px;
+  padding: 0.1rem 1.5rem;
+}
+
+.message p {
+  border-radius: 1.15rem;
+  line-height: 1.25;
+  max-width: 75%;
+  padding: 0.5rem .875rem;
+  position: relative;
+  word-wrap: break-word;
+}
+
+.message p::before,
+.message p::after {
+  bottom: -0.1rem;
+  content: "";
+  height: 1rem;
+  position: absolute;
+}
+
+p.from-me {
+  align-self: flex-end;
+  background-color: #FCAA9F;
+  color: #000000; 
+}
+
+p.from-me::before {
+  border-bottom-left-radius: 0.8rem 0.7rem;
+  border-right: 1rem solid #FCAA9F;
+  right: -0.35rem;
+  transform: translate(0, -0.1rem);
+}
+
+p.from-me::after {
+  background-color: #fff;
+  border-bottom-left-radius: 0.5rem;
+  right: -40px;
+  transform:translate(-30px, -2px);
+  width: 10px;
+}
+
+p[class^="from-"] {
+  margin: 0.5rem 0;
+  width: fit-content;
+}
+
+p.from-me ~ p.from-me {
+  margin: 0.25rem 0 0;
+}
+
+p.from-me ~ p.from-me:not(:last-child) {
+  margin: 0.25rem 0 0;
+}
+
+p.from-me ~ p.from-me:last-child {
+  margin-bottom: 0.5rem;
+}
+
+p.from-them {
+  align-items: flex-start;
+  background-color: #e5e5ea;
+  color: #000;
+}
+
+p.from-them:before {
+  border-bottom-right-radius: 0.8rem 0.7rem;
+  border-left: 1rem solid #e5e5ea;
+  left: -0.35rem;
+  transform: translate(0, -0.1rem);
+}
+
+p.from-them::after {
+  background-color: #fff;
+  border-bottom-right-radius: 0.5rem;
+  left: 20px;
+  transform: translate(-30px, -2px);
+  width: 10px;
+}
+
+p[class^="from-"].emoji {
+  background: none;
+  font-size: 2.5rem;
+}
+
+p[class^="from-"].emoji::before {
+  content: none;
+}
+
+.no-tail::before {
+  display: none;
+}
+
+.margin-b_none {
+  margin-bottom: 0 !important;
+}
+
+.margin-b_one {
+  margin-bottom: 1rem !important;
+}
+
+.margin-t_one {
+  margin-top: 1rem !important;
+}
+
+/* general styling */
+@font-face {
+  font-family: "SanFrancisco";
+  src:
+    url("https://cdn.rawgit.com/AllThingsSmitty/fonts/25983b71/SanFrancisco/sanfranciscodisplay-regular-webfont.woff2") format("woff2"),
+    url("https://cdn.rawgit.com/AllThingsSmitty/fonts/25983b71/SanFrancisco/sanfranciscodisplay-regular-webfont.woff") format("woff");
+}
+
+.titlePanel {
+  background-color: #c4c4c4;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+}
+
+.titlePanel h1 {
+  font-family: "SanFrancisco";
+  text-align: center;
+}
+
+.textInputBar {
+  display: flex;
+  flex-direction: row;
+  background-color: #c4c4c4;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  height: 48px;
+}
+
+.textSection {
+  background-color: white;
+  width: 80%;
+  border-radius: 18px;
+  color: #c4c4c4;
+  padding: 2px;
+  margin: 8px;
+  height: 24px;
+}
+
+.sendButton {
+  background-color: #FCAA9F;
+  border-radius: 16px;
+  height: 28px;
+  width: 60px;
+  margin: 8px;
+}
+
+.buttonInputBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  height: 48px;
+  background-color: #c4c4c4;
+}
+
+.optionButton {
+  width: 40%;
+  background-color: #FCAA9F;
+  border-radius: 10px;
+  color: white;
+  border: none;
+  margin: 5px;
+}
+
+.FeedItem {
+  width: 90%;
+  padding: 20px;
+  margin: 20px;
+  margin-right: 30px;
+  border-radius: 10px;
+  background-color: #3CBAC5;  
+  font-size: 1.25rem;
+  color: white;
+  
+}
+
+.feedPanel {
+  width: 55%;
+  margin-top: 10px;
+  border: 2px solid #c4c4c4;
+  border-radius: 10px;
+  height: 70%;
+}
+
+.feedScroll {
+  height: 100%;
+  overflow: scroll;
+  overflow-x: hidden;
+  background-color: #fff;
+}
+
+.feedScroll::-webkit-scrollbar {
+    width: 16px;
+}
+ 
+.feedScroll::-webkit-scrollbar-track {
+    background-color: #e4e4e4;
+    border-radius: 100px;
+}
+ 
+.feedScroll::-webkit-scrollbar-thumb {
+    background-color: #3CBAC5;
+    border-radius: 100px;
+}
+
+.nextButton {
+  width: 100%;
+  height: 40px;
+  border-radius: 10px;
+  background-color: #FCAA9F;
+}
