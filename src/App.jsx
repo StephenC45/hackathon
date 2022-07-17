@@ -12,7 +12,6 @@ import { useState } from 'react';
 function App() {
 
   const [index, setIndex] = useState(0)
-  const [waitForIntput, setWaitForInput] = useState(false)
 
   let messageArray = [
     {
@@ -23,12 +22,16 @@ function App() {
       message: "V: HEY YALL! Just wanted to say you guys are the best and that we need to hang out more!",
       sender:"from-V",
       type: "GC"
+    }, {
+      message: "A: Hey, I'm not doing too well.",
+      sender:"from-A",
+      type: "DM"
     },
+    
     {
       text: "M: aw totally, I had so much fun :)",
       sender:"from-M",
       type: "GC"
-
     },
     {
       message: "P: yea! I wanna go to the beach next time!",
@@ -135,39 +138,12 @@ function App() {
 
   ])
 
-  const [feedContent, setFeedContent] = useState([
-    {
-      tag: "City lights and starry nights! Here's to evermore adventure.",
-      poster: "V",
-    }, 
-    {
-      tag: "michelle's bf is totally sleeping around. downright flirting with a brunette today",
-      poster: "Anonymous",
-    },
-    {
-      tag: "Alison is such a f***ing s***. You should just go and die, homewrecker.",
-      poster: "Anonymous",
-    },
-    {
-      tag: "Anonymous - Alison is such a f***ing s***. You should just go and die, homewrecker.",
-      poster: "Anonymous",
-    },
-    {
-      tag: "im so scared. i didnt do anything. please stop hurting me. i can't take these messages right now. There's only one person keeping me going - thank you.",
-      poster: "Alison",
-    },
-    {
-      tag: "i didnt do anything. please stop hurting me. i can't take these messages right now. there's no one i can trust or talk to.",
-      poster: "Alison",
-    },
-  ])
+  const [feedContent, setFeedContent] = useState([])
 
   const newDM = ( text, origin ) => {
     //origin has to be either "from-me" or "from-them"
     if (origin = "from-me") {
-      //TODO
-      //this is where you can register that a button has been pressed. The button pressed is {text}, and you can progress the store from this point.
-      //
+
     }
     let new_DM_messages = [...DM_messages]
     new_DM_messages.push({ text: text, origin: origin })
@@ -176,7 +152,7 @@ function App() {
 //these functions can be called for either new messages triggered by the user or new messages triggered by the system.
   const newGroupMessage = ( text, origin ) => {
     if (origin == "from-me") {
-        //let group_option = ["Peace out.", "Sleep well."]
+
     }
     
     let newGroupMessages = [...groupMessages]
@@ -185,12 +161,14 @@ function App() {
   }
 
   const newFeedItem = ( text, poster ) => {
+    
     let newFeedContent = [...feedContent]
     newFeedContent.push({ tag: text, poster: poster})
     setFeedContent(newFeedContent)
   }
 
   const nextPhase = () => {
+    
     let newIndex = index + 1
     setIndex(newIndex)
     if (messageArray[newIndex].type == "DM") {
@@ -200,9 +178,11 @@ function App() {
     } else if (messageArray[newIndex].type == "Feed") {
       newFeedItem(messageArray[newIndex].message, messageArray[newIndex].sender)
     } else if (messageArray[newIndex].type == "DMoptions"){
+      setWaitForInput(true)
       let options = [messageArray[newIndex].message, messageArray[newIndex].sender]
       setDM_options(options)
     } else if ((messageArray[newIndex].type == "GCoptions")) {
+      setWaitForInput(true)
       let options = [messageArray[newIndex].message, messageArray[newIndex].sender]
       setGC_options(options)
     }

@@ -36,10 +36,11 @@ body {
   margin: 10px;
   border-radius: 10px;
   max-height: 40%;
+  margin-bottom: 40px;
 }
 
 .messageScroll {
-  max-height: 70%;
+  height: 190px;
   overflow: scroll;
   overflow-x: hidden;
   background-color: #fff;
@@ -259,7 +260,7 @@ p[class^="from-"].emoji::before {
 }
 
 .feedScroll {
-  height: 100%;
+  height: 350px;
   overflow: scroll;
   overflow-x: hidden;
   background-color: #fff;
@@ -280,8 +281,10 @@ p[class^="from-"].emoji::before {
 }
 
 .nextButton {
-  width: 100%;
-  height: 40px;
+  margin-left: 10%;
+  margin-roight
+  width: 80%;
+  height: 60px;
   border-radius: 10px;
   background-color: #FCAA9F;
 }
