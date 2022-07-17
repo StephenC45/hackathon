@@ -23,10 +23,10 @@ function App() {
       sender:"from-V",
       type: "GC"
     }, {
-      message: "A: Hey, I'm not doing too well.",
-      sender:"from-A",
+      message: "Hey, I miss you.",
+      sender:"from-them",
       type: "DM"
-    },
+    }, 
     
     {
       text: "M: aw totally, I had so much fun :)",
@@ -61,7 +61,7 @@ function App() {
     },
     {
       message: "Anonymous: michelle's bf is totally sleeping around. downright flirting with a brunette today",
-      sender: "from-P",
+      sender: "Anon",
       type: "Feed"
     },
     {
@@ -105,14 +105,14 @@ function App() {
       type: "GC"
     },
     {
-      message: "",
-      sender: "",
-      type: ""
+      message: "Um, are we sure it was about her?",
+      sender: "What a sad b****.",
+      type: "GCoptions"
     },
     {
-      message: "",
-      sender: "",
-      type: ""
+      message: "Did you do it?",
+      sender: "What's wrong with you?",
+      type: "DMoptions"
     },
     {
       message: "",
@@ -143,7 +143,7 @@ function App() {
   const newDM = ( text, origin ) => {
     //origin has to be either "from-me" or "from-them"
     if (origin = "from-me") {
-
+      setDM_options([])
     }
     let new_DM_messages = [...DM_messages]
     new_DM_messages.push({ text: text, origin: origin })
@@ -152,7 +152,7 @@ function App() {
 //these functions can be called for either new messages triggered by the user or new messages triggered by the system.
   const newGroupMessage = ( text, origin ) => {
     if (origin == "from-me") {
-
+      setGC_options([])
     }
     
     let newGroupMessages = [...groupMessages]
@@ -172,17 +172,17 @@ function App() {
     let newIndex = index + 1
     setIndex(newIndex)
     if (messageArray[newIndex].type == "DM") {
-      newDM(messageArray[index].message, "from-them")
+      newDM(messageArray[newIndex].message, "from-them")
     } else if (messageArray[newIndex].type == "GC") {
       newGroupMessage(messageArray[newIndex].message, "from-them")
     } else if (messageArray[newIndex].type == "Feed") {
       newFeedItem(messageArray[newIndex].message, messageArray[newIndex].sender)
     } else if (messageArray[newIndex].type == "DMoptions"){
-      setWaitForInput(true)
+      
       let options = [messageArray[newIndex].message, messageArray[newIndex].sender]
       setDM_options(options)
     } else if ((messageArray[newIndex].type == "GCoptions")) {
-      setWaitForInput(true)
+
       let options = [messageArray[newIndex].message, messageArray[newIndex].sender]
       setGC_options(options)
     }
@@ -195,6 +195,9 @@ function App() {
   
   return (
     <main>
+      <div className="header">
+        <h1 className="title">SocialLine.com</h1>
+      </div>
       <div className="nextButtonPanel">
         <button className="nextButton" onClick={nextPhase}>NEXT</button>
       </div>

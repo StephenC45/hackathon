@@ -282,9 +282,21 @@ p[class^="from-"].emoji::before {
 
 .nextButton {
   margin-left: 10%;
-  margin-roight
+  margin-right: 10%;
+  margin-top: 20px;
+  margin-bottom: 20px;
   width: 80%;
   height: 60px;
   border-radius: 10px;
   background-color: #FCAA9F;
+  border: none;
+}
+
+.header {
+  height: 40px;
+}
+
+.title {
+  text-align: center;
+  color: grey;
 }
